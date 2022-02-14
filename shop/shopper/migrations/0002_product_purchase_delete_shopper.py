@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('count', models.IntegerField()),
                 ('created_at', models.DateTimeField(auto_now_add=True, db_index=True)),
-                ('product', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='purchases', to='shopper.product')),
+                ('products', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='purchases', to='shopper.products')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='purchases', to=settings.AUTH_USER_MODEL)),
             ],
         ),

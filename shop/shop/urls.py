@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', product_list, name="product_list"),
     path(
-        'product/<int:product_id>/', product_details_view, name="product_details_view"
+        'products/<int:product_id>/', product_details_view, name="product_details_view"
     ),
 ]
 

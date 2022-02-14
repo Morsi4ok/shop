@@ -51,4 +51,4 @@ def product_details_view(request, product_id):
         if request.POST.get("count"):
             Purchase.objects.create(product=product, user=request.user, count=request.POST.get("count"))
             return redirect("product_details_view", product_id=product_id)
-    return render(request, "products/details.html", {"product": product})
+    return render(request, "products/details.html", {"products": product})
