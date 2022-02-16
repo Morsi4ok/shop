@@ -38,6 +38,10 @@ def product_list(request):
                     total_cost=Sum("purchases__count") * F("cost")
                 ).order_by("-total_cost")
 
+        status = filters_form.cleaned_data["status"]
+        if status:
+            products = products.filter(status=status)
+
     paginator = Paginator(products, 30)
     page_number = request.GET.get("page")
     products = paginator.get_page(page_number)
@@ -51,4 +55,4 @@ def product_details_view(request, product_id):
         if request.POST.get("count"):
             Purchase.objects.create(product=product, user=request.user, count=request.POST.get("count"))
             return redirect("product_details_view", product_id=product_id)
-    return render(request, "products/details.html", {"products": product})
+    return render(request, "products/details.html", {"product": product})

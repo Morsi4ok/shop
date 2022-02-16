@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path
 
+from shop.views import register_view, login_view, logout_view
 from shopper.views import product_list, product_details_view
 
 urlpatterns = [
@@ -25,6 +26,9 @@ urlpatterns = [
     path(
         'products/<int:product_id>/', product_details_view, name="product_details_view"
     ),
+    path("register/", register_view, name="register"),
+    path("login/", login_view, name="login"),
+    path("logout/", logout_view, name="logout"),
 ]
 
 
@@ -35,4 +39,3 @@ if settings.DEBUG:
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
